@@ -1,0 +1,610 @@
+<title>Vishal Sinha</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --paper:#EEEAE0;
+    --surface:#FFFFFF;
+    --ink:#1C2029;
+    --ink-soft:#615C4E;
+    --ink-faint:#8B8676;
+    --amber:#A8641E;
+    --amber-soft:#F1E4D2;
+    --teal:#1B6E67;
+    --teal-soft:#DCEBE9;
+    --line:rgba(28,32,41,0.14);
+    --line-strong:rgba(28,32,41,0.28);
+    --shadow: 0 1px 2px rgba(28,32,41,0.06);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#13161E;
+      --surface:#1B1F29;
+      --ink:#EDEAE0;
+      --ink-soft:#ACA795;
+      --ink-faint:#736E5F;
+      --amber:#E7A857;
+      --amber-soft:#332A1B;
+      --teal:#5FCFC6;
+      --teal-soft:#152825;
+      --line:rgba(237,234,224,0.14);
+      --line-strong:rgba(237,234,224,0.26);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#13161E;
+    --surface:#1B1F29;
+    --ink:#EDEAE0;
+    --ink-soft:#ACA795;
+    --ink-faint:#736E5F;
+    --amber:#E7A857;
+    --amber-soft:#332A1B;
+    --teal:#5FCFC6;
+    --teal-soft:#152825;
+    --line:rgba(237,234,224,0.14);
+    --line-strong:rgba(237,234,224,0.26);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ background:var(--paper); }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--amber); color:#100D08; }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:clamp(2.5rem,6vw,5rem) clamp(1.25rem,4vw,1.5rem) 4rem;
+  }
+
+  .eyebrow{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;
+    align-items:center;
+    gap:0.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:1.4em;
+    height:1px;
+    background:var(--line-strong);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:flex;
+    flex-direction:column;
+    gap:1.4rem;
+    padding-bottom:2.4rem;
+    border-bottom:1px solid var(--line);
+    opacity:0;
+    transform:translateY(10px);
+    animation:rise 0.7s ease-out forwards;
+  }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+  .hero-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .mark{
+    width:52px; height:52px;
+    border:1px solid var(--line-strong);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Fraunces", serif;
+    font-size:1.15rem;
+    font-weight:600;
+    flex:none;
+    background:var(--surface);
+  }
+  .status{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:0.5em;
+    padding-top:0.6rem;
+  }
+  .status .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 3px var(--teal-soft);
+  }
+
+  h1.name{
+    font-family:"Fraunces", serif;
+    font-optical-sizing:auto;
+    font-weight:500;
+    font-size:clamp(2.6rem,7vw,4.2rem);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    text-wrap:balance;
+    margin:0;
+  }
+  .role{
+    font-size:clamp(1.05rem,2.4vw,1.28rem);
+    color:var(--ink-soft);
+    max-width:38em;
+  }
+  .role strong{ color:var(--ink); font-weight:600; }
+
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem 1.4rem;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+  .meta-row span{ display:inline-flex; align-items:center; gap:0.5em; }
+  .meta-row svg{ width:14px; height:14px; opacity:0.75; }
+
+  .summary{
+    max-width:56ch;
+    color:var(--ink-soft);
+    font-size:1rem;
+  }
+
+  /* ---------- link chips ---------- */
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.65rem;
+  }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:0.55em;
+    padding:0.62em 1.05em;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    background:var(--surface);
+    text-decoration:none;
+    font-size:0.9rem;
+    font-weight:500;
+    color:var(--ink);
+    transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .chip svg{ width:16px; height:16px; }
+  .chip:hover{
+    transform:translateY(-2px);
+    border-color:var(--amber);
+    background:var(--amber-soft);
+  }
+  .chip.primary{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .chip.primary:hover{
+    background:var(--amber);
+    border-color:var(--amber);
+    color:#181008;
+  }
+
+  /* ---------- sections ---------- */
+  section{ padding-top:3rem; }
+  section > .eyebrow{ margin-bottom:1.1rem; }
+  h2.section-title{
+    font-family:"Fraunces", serif;
+    font-weight:500;
+    font-size:1.6rem;
+    margin:0 0 1.4rem;
+  }
+
+  /* ---------- stats ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .stat{
+    background:var(--surface);
+    padding:1.2rem 1rem;
+    display:flex;
+    flex-direction:column;
+    gap:0.35rem;
+  }
+  .stat .num{
+    font-family:"IBM Plex Mono", monospace;
+    font-variant-numeric:tabular-nums;
+    font-size:clamp(1.35rem,3vw,1.7rem);
+    font-weight:500;
+    color:var(--teal);
+  }
+  .stat .label{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    line-height:1.35;
+  }
+  @media (max-width:600px){
+    .stats{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* ---------- timeline ---------- */
+  .timeline{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:2.2rem;
+  }
+  .role-block{
+    position:relative;
+    padding-left:1.6rem;
+    border-left:1px solid var(--line);
+  }
+  .role-block::before{
+    content:"";
+    position:absolute;
+    left:-4.5px; top:0.35rem;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--amber);
+  }
+  .role-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:0.4rem 1rem;
+    margin-bottom:0.15rem;
+  }
+  .role-head .org{
+    font-family:"Fraunces", serif;
+    font-weight:500;
+    font-size:1.18rem;
+  }
+  .role-head .dates{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    white-space:nowrap;
+  }
+  .role-title{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    margin-bottom:0.85rem;
+  }
+  ul.bullets{
+    margin:0; padding:0; list-style:none;
+    display:flex; flex-direction:column; gap:0.55rem;
+  }
+  ul.bullets li{
+    position:relative;
+    padding-left:1.15em;
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+  ul.bullets li::before{
+    content:"";
+    position:absolute; left:0; top:0.62em;
+    width:5px; height:5px;
+    background:var(--teal);
+  }
+  ul.bullets li strong{ font-weight:600; }
+  ul.bullets li .sub{ color:var(--ink-soft); }
+
+  /* ---------- skills ---------- */
+  .skill-group{
+    display:grid;
+    grid-template-columns:9rem 1fr;
+    gap:0.5rem 1.2rem;
+    padding:0.7rem 0;
+    border-top:1px solid var(--line);
+  }
+  .skill-group:last-child{ border-bottom:1px solid var(--line); }
+  .skill-group .cat{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.76rem;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+    padding-top:0.3rem;
+  }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .tag{
+    font-size:0.85rem;
+    padding:0.32em 0.75em;
+    border:1px solid var(--line);
+    border-radius:5px;
+    background:var(--surface);
+    color:var(--ink);
+  }
+  @media (max-width:560px){
+    .skill-group{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- two-col lists ---------- */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2.5rem;
+  }
+  @media (max-width:620px){
+    .two-col{ grid-template-columns:1fr; gap:2rem; }
+  }
+  .plain-list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+  .plain-list li{ font-size:0.95rem; display:flex; gap:0.7em; align-items:flex-start; }
+  .plain-list li svg{ width:15px; height:15px; margin-top:0.2em; flex:none; color:var(--amber); }
+
+  /* ---------- projects ---------- */
+  .projects{ display:flex; flex-direction:column; gap:1rem; }
+  .project{
+    padding:1.1rem 1.2rem;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--surface);
+  }
+  .project .pname{
+    font-weight:600; font-size:0.98rem;
+    display:flex; align-items:center; gap:0.5em;
+    margin-bottom:0.3rem;
+  }
+  .project .pname::before{
+    content:"";
+    width:6px; height:6px;
+    background:var(--teal);
+    border-radius:50%;
+    flex:none;
+  }
+  .project p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
+
+  /* ---------- education ---------- */
+  .edu-item{
+    display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+    padding:0.9rem 0;
+    border-top:1px solid var(--line);
+  }
+  .edu-item:last-child{ border-bottom:1px solid var(--line); }
+  .edu-item .deg{ font-weight:600; font-size:0.96rem; }
+  .edu-item .school{ color:var(--ink-soft); font-size:0.9rem; }
+  .edu-item .when{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    white-space:nowrap;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:3.5rem;
+    padding-top:2rem;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:1.4rem;
+  }
+  footer .cta{
+    font-family:"Fraunces", serif;
+    font-size:1.35rem;
+    max-width:26ch;
+    text-wrap:balance;
+  }
+  footer .fine{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.74rem;
+    color:var(--ink-faint);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero{ animation:none; opacity:1; transform:none; }
+    .chip, .chip:hover{ transition:none; transform:none; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <div class="mark">VS</div>
+      <div class="status"><span class="dot"></span>open to new opportunities</div>
+    </div>
+
+    <h1 class="name">Vishal Sinha</h1>
+    <p class="role">Data Science Manager — <strong>GenAI &amp; agentic AI systems</strong> for enterprise workforce analytics, Accenture</p>
+
+    <div class="meta-row">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Bengaluru, India</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>vishalvicky1905@gmail.com</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 1h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L7.1 8.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2z"/></svg>+91 90804 72134</span>
+    </div>
+
+    <p class="summary">9+ years building GenAI, agentic AI, machine learning, and workforce-analytics platforms across enterprise clients — currently modeling hybrid organizations where human talent and digital labor work side by side.</p>
+
+    <nav class="links" aria-label="Profile links">
+      <a class="chip primary" href="mailto:vishalvicky1905@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        Email me
+      </a>
+      <a class="chip" href="https://www.linkedin.com/in/vishal1905" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5v6"/><circle cx="7.5" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11.5 16.5v-3.6c0-1.4 1-2.3 2.2-2.3 1.2 0 1.8.8 1.8 2.3v3.6"/></svg>
+        LinkedIn
+      </a>
+      <a class="chip" href="https://github.com/vishal1905" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-1.4-6-1.7m12 3.7v-3c0-.9.3-1.5.6-1.8-2.1-.2-4.3-1-4.3-4.6 0-1 .3-1.8 1-2.5-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.6 1a9 9 0 0 1 4.7 0c1.8-1.3 2.6-1 2.6-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.5 0 3.6-2.2 4.4-4.3 4.6.3.3.6.9.6 1.9v3"/></svg>
+        GitHub
+      </a>
+      <a class="chip" href="https://medium.com/@vishalvicky1905" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5v14M4 5l4.5 6L13 5M13 5v14M17 8.3v8.4c0 1 .6 1.8 1.5 2.1 1.4.4 2.5-.7 2.5-2V9.8c0-1.3-1.1-2.4-2.5-2-.9.3-1.5 1.1-1.5 2.1z"/></svg>
+        Medium
+      </a>
+    </nav>
+  </header>
+
+  <section aria-label="Career metrics">
+    <p class="eyebrow">Track record</p>
+    <div class="stats">
+      <div class="stat"><span class="num">9+ yrs</span><span class="label">building ML &amp; GenAI systems for enterprise clients</span></div>
+      <div class="stat"><span class="num">$100K/mo</span><span class="label">in client cost savings, strategic workforce planning</span></div>
+      <div class="stat"><span class="num">40%</span><span class="label">time saved via GenAI learning-content platform</span></div>
+      <div class="stat"><span class="num">10K+</span><span class="label">employees covered by one HR analytics suite</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Experience</p>
+    <h2 class="section-title">Where the work happened</h2>
+    <div class="timeline">
+
+      <div class="role-block">
+        <div class="role-head">
+          <span class="org">Accenture</span>
+          <span class="dates">Oct 2021 — Present</span>
+        </div>
+        <div class="role-title">Data Science Manager · Bengaluru</div>
+        <ul class="bullets">
+          <li><strong>Workforce Reinvention Strategy</strong> — <span class="sub">leading a production-ready tool modeling hybrid organizations that blend human talent with digital/agentic labor, slated for release to 100 clients.</span></li>
+          <li><strong>Edge Learning Platform</strong> — <span class="sub">end-to-end build of skill-gap assessments, personalized learning pathways, and an AI coaching interface with timestamped explanations.</span></li>
+          <li><strong>Learning Content Creation (LCC) Tool</strong> — <span class="sub">GenAI platform automating course objectives through assessments, cutting content time by up to 40% across product, insurance, and oil &amp; gas clients.</span></li>
+          <li><strong>People Analytics</strong> — <span class="sub">10+ Tableau dashboards and an Employee Analytical Record giving a 10K+ employee company real-time visibility into attrition, org structure, and lifecycle metrics.</span></li>
+          <li><strong>Strategic Workforce Planning</strong> — <span class="sub">tools for a mobility-tech company and an energy utility, worth up to $100K in monthly savings, visualized in Power BI.</span></li>
+          <li><strong>Skill &amp; Outside-In Analysis</strong> — <span class="sub">led engagements for a major international bank, a global finance firm, and a major telecom provider.</span></li>
+          <li><strong>Team Leadership</strong> — <span class="sub">manages 5 direct reports and cross-functional teams of 5–6 across simultaneous client engagements, from strategy through deployment.</span></li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <div class="role-head">
+          <span class="org">Terawe Technologies</span>
+          <span class="dates">Aug 2020 — Oct 2021</span>
+        </div>
+        <div class="role-title">Data Scientist · Bengaluru</div>
+        <ul class="bullets">
+          <li><strong>Doctor-patient video assessment automation</strong> — <span class="sub">built a system extracting domain-specific parameters from audio-video consultations using deep learning and NLP on Microsoft Azure.</span></li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <div class="role-head">
+          <span class="org">Tata Consultancy Services</span>
+          <span class="dates">Feb 2017 — Aug 2020</span>
+        </div>
+        <div class="role-title">Data Scientist · Bengaluru &amp; Chennai</div>
+        <ul class="bullets">
+          <li><strong>Invoice processing</strong> — <span class="sub">automated the workflow for a major energy provider using Abbyy FlexiCapture.</span></li>
+          <li><strong>POS classification</strong> — <span class="sub">built a model predicting POS locations for a major bank.</span></li>
+          <li><strong>Image crowdsourcing</strong> — <span class="sub">AI platform for real-time auto-annotation and manual review, using YOLO and TensorFlow.js.</span></li>
+          <li><strong>Dermatoglyphics</strong> — <span class="sub">fingerprint analysis platform for gender and category prediction with GAN-augmented training data, presented to senior leadership.</span></li>
+          <li><strong>Training &amp; mentorship</strong> — <span class="sub">trained two 24-engineer cohorts in Java, Python, and ML/DL fundamentals.</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Toolset</p>
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skill-group">
+      <span class="cat">Programming</span>
+      <div class="tag-row"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">FastAPI</span><span class="tag">Flask</span></div>
+    </div>
+    <div class="skill-group">
+      <span class="cat">Generative &amp; agentic AI</span>
+      <div class="tag-row"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">Azure OpenAI</span><span class="tag">GPTs</span><span class="tag">RAG</span></div>
+    </div>
+    <div class="skill-group">
+      <span class="cat">Machine learning</span>
+      <div class="tag-row"><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Computer Vision</span><span class="tag">Model Deployment</span></div>
+    </div>
+    <div class="skill-group">
+      <span class="cat">Visualization</span>
+      <div class="tag-row"><span class="tag">Power BI</span><span class="tag">Tableau</span></div>
+    </div>
+    <div class="skill-group">
+      <span class="cat">Cloud &amp; tools</span>
+      <div class="tag-row"><span class="tag">Microsoft Azure</span><span class="tag">Databricks</span><span class="tag">Bitbucket</span><span class="tag">Airflow</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Recognition</p>
+    <div class="two-col">
+      <div>
+        <h2 class="section-title" style="font-size:1.15rem;">Certifications</h2>
+        <ul class="plain-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"/></svg>Microsoft Certified: Azure Data Scientist Associate</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"/></svg>Coursera: Deep Learning Specialization</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"/></svg>Coursera: Machine Learning</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="section-title" style="font-size:1.15rem;">Achievements</h2>
+        <ul class="plain-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>Client Value Creation Award</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>Star Award — Tenacious Techno Award</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>Champion of the Quarter — Career Enabler Award</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Side of the desk</p>
+    <h2 class="section-title">Personal projects</h2>
+    <div class="projects">
+      <div class="project">
+        <div class="pname">Animal Stunning Identification</div>
+        <p>Deep-learning solution using DeepLabCut for real-time identification of animal stunning events, with automated Slack notifications.</p>
+      </div>
+      <div class="project">
+        <div class="pname">ESRGAN</div>
+        <p>End-to-end ESRGAN implemented in PyTorch from a published research paper, to enhance image resolution.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Education</p>
+    <div>
+      <div class="edu-item">
+        <div><div class="deg">Master of Computer Applications</div><div class="school">SASTRA University, Thanjavur · Correspondence</div></div>
+        <div class="when">2020</div>
+      </div>
+      <div class="edu-item">
+        <div><div class="deg">B.Sc. Physics</div><div class="school">St. Xavier's College, Ranchi · Classroom</div></div>
+        <div class="when">2016</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="cta">Open to a conversation about GenAI, agentic systems, or workforce analytics.</p>
+    <nav class="links" aria-label="Profile links, repeated">
+      <a class="chip primary" href="mailto:vishalvicky1905@gmail.com">Email</a>
+      <a class="chip" href="https://www.linkedin.com/in/vishal1905" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="chip" href="https://github.com/vishal1905" target="_blank" rel="noopener">GitHub</a>
+      <a class="chip" href="https://medium.com/@vishalvicky1905" target="_blank" rel="noopener">Medium</a>
+    </nav>
+    <p class="fine">Bengaluru, India · vishalvicky1905@gmail.com · +91 90804 72134</p>
+  </footer>
+
+</div>
